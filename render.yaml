@@ -1,0 +1,14 @@
+# Enklicksdriftsättning på Render för att kunna titta på sidan.
+# Gratisnivån har ingen beständig disk: förfrågningar försvinner när tjänsten startas om.
+services:
+  - type: web
+    name: forme
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: SUPPLIER_KEY
+        generateValue: true
